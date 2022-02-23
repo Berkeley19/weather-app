@@ -11,18 +11,34 @@ export default function Map() {
     const [zoom, setZoom] = React.useState(9);
 
     React.useEffect(() => {
-        if (map.current) return; // initialize map only once
-        map.current = new mapboxgl.Map({
-            container: mapContainer.current!,
-            style: 'mapbox://styles/mapbox/streets-v11',
-            center: [lng, lat],
-            zoom: zoom
+        if (!map.current) {
+            map.current = new mapboxgl.Map({
+                container: mapContainer.current!,
+                style: 'mapbox://styles/mapbox/streets-v11',
+                center: [lng, lat],
+                zoom: zoom
+            });
+        }; // initialize map only once
+        
+        console.log(mapContainer.current)
+        map.current.on('move', () => {
+            setLng(map.current!.getCenter().lng)
+            setLat(map.current!.getCenter().lat)
+            setZoom(map.current!.getZoom())
         });
+
+        map.current.on('load', () => {
+            map.current?.resize()
+        });
+        
     })
 
     return (
         <div>
-            <div ref={mapContainer} className="map-container" />
+            <div id="topDisplay">
+                Latitude: {lat} | Longitude: {lng} | Zoom: {zoom}
+            </div>            
+            <div className='map-container' ref={mapContainer} style={{width: "100vw", height: "100vh"}}/>
         </div>
     );
 }
