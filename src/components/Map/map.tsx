@@ -26,10 +26,6 @@ export default function Map() {
             setLat(map.current!.getCenter().lat)
             setZoom(map.current!.getZoom())
         });
-
-        map.current.on('load', () => {
-            map.current?.resize()
-        });
         
     })
 
