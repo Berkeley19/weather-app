@@ -9,9 +9,14 @@ const WeatherDisplay: React.FunctionComponent = () =>{
   const [lat, setLat] = React.useState<number>(42.35);
   const [zoom, setZoom] = React.useState<number>(9);
 
+
+
   return (
     <main id="mainApp">
       <Map lngState={[lng, setLng]} latState={[lat, setLat]} zoomState={[zoom, setZoom]}/>
+      <aside id="side__panel">
+        <WeatherDisplay />
+      </aside>
     </main>
   )
 }

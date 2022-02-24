@@ -1,3 +1,10 @@
 #mainApp{
     display: flex;
 }
+
+#side__panel{
+    height: 100%;
+    right: 0;
+    width: 350px;
+    
+}
