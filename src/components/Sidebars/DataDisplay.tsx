@@ -1,21 +1,12 @@
 import * as React from 'react';
+import { DisplayData, LocationData } from '../../utils/interfaces'
+import {RoundNumber} from '../../utils/usefulUtiils'
 
-interface LocationData  {
-    lat: number;
-    lng: number;
-    zoom: number;
-}
-
-
-const DataDisplay: React.FunctionComponent<LocationData> = (props) => {
-
-  const RoundNumber:number|any = (num:any) => {
-    return (Math.round((num + Number.EPSILON) * 100) / 100).toFixed(2)
-  }  
+const DataDisplay: React.FunctionComponent<DisplayData> = ({lat, lng, zoom}) => {
 
   return (
     <div id='topDisplay'>
-      Latitude: {RoundNumber(props.lat)} | Longitude: {RoundNumber(props.lng)} | Zoom: {RoundNumber(props.zoom)}
+      Latitude: {RoundNumber(lat)} | Longitude: {RoundNumber(lng)} | Zoom: {RoundNumber(zoom)}
     </div>
   );
 }
