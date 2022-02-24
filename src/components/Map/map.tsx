@@ -1,5 +1,8 @@
 import mapboxgl from 'mapbox-gl';
 import * as React from 'react'
+import 'mapbox-gl/dist/mapbox-gl.css';
+import './Map.css';
+import DataDisplay from '../Sidebars/DataDisplay';
  
 mapboxgl.accessToken = 'pk.eyJ1IjoiamFrZTM3IiwiYSI6ImNrenljMDJxYzA5MDkybnA5eDljODUxZGMifQ.u0BJ4wc7-Zq4lYTH5yGCxA';
 
@@ -26,15 +29,17 @@ export default function Map() {
             setLat(map.current!.getCenter().lat)
             setZoom(map.current!.getZoom())
         });
+
+        map.current.on('load', () => {
+            map.current?.resize()
+        })
         
     })
 
     return (
-        <div>
-            <div id="topDisplay">
-                Latitude: {lat} | Longitude: {lng} | Zoom: {zoom}
-            </div>            
-            <div className='map-container' ref={mapContainer} style={{width: "100vw", height: "100vh"}}/>
+        <div id="map__contained">
+            <DataDisplay lat= {lat} lng={lng} zoom={zoom}/>      
+            <div id='map' ref={mapContainer} />
         </div>
     );
 }

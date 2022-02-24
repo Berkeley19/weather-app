@@ -1,4 +1,5 @@
-import Map from "../../components/Map/map";
+import Map from "../../components/Map/Map";
+import "./WeatherDisplay.css"
 
 export default function WeatherDisplay() {
     return (
