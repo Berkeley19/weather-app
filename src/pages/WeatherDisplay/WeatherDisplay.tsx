@@ -16,8 +16,8 @@ const WeatherDisplay: React.FunctionComponent = () =>{
       <button id="side__button" onClick={() => {setOpenSide(openSide => !openSide)}}>
         <svg className={`switch ${openSide ? "circleNorm" : "circleClick"}`} xmlns="http://www.w3.org/2000/svg">
           <g>
-            <ellipse className="background" ry="15" rx="15" cy="15.625" cx="15.625" strokeWidth="2"/>
-            <ellipse className="foreground" ry="15" rx="15" cy="15.625" cx="15.625" strokeWidth="2"/>
+            <ellipse className="background" ry="15" rx="15" cy="15.625" cx="15.625" strokeWidth="1"/>
+            <ellipse className="foreground" ry="15" rx="15" cy="15.625" cx="15.625" strokeWidth="1"/>
             <line className="line line1" x1="13" y1="15.5" x2="18.5" y2="15.5" />
             <line className="line line2" x1="13" y1="15.5" x2="18.5" y2="15.5" />
           </g>
