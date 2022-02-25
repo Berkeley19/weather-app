@@ -9,8 +9,11 @@ export interface LocationData  {
     zoomState: [number, Dispatcher<number>];
 }
 
-export interface DisplayData  {
+export interface GeographicalData  {
     lat: number;
     lng: number;
+}
+
+export interface DisplayData extends GeographicalData {
     zoom: number;
 }

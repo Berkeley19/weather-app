@@ -10,6 +10,7 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiamFrZTM3IiwiYSI6ImNrenljMDJxYzA5MDkybnA5eDljO
 const Map: React.FunctionComponent<LocationData> = ({lngState: [lng, setLng], latState: [lat, setLat], zoomState: [zoom, setZoom]}) => {
     const mapContainer = React.useRef(null);
     const map = React.useRef<mapboxgl.Map | null>(null);
+    const [changeZoom, setChangeZoom] = React.useState<boolean>(false);
     
 
     React.useEffect(() => {
@@ -18,10 +19,15 @@ const Map: React.FunctionComponent<LocationData> = ({lngState: [lng, setLng], la
                 container: mapContainer.current!,
                 style: 'mapbox://styles/mapbox/streets-v11',
                 center: [lng, lat],
-                zoom: zoom
+                zoom: zoom,
             });
         }; // initialize map only once
         
+        if(!changeZoom) {
+            setChangeZoom(true)
+            map.current.doubleClickZoom.disable()
+        }
+
         map.current.on('move', () => {
             setLng(map.current!.getCenter().lng)
             setLat(map.current!.getCenter().lat)
@@ -32,10 +38,10 @@ const Map: React.FunctionComponent<LocationData> = ({lngState: [lng, setLng], la
             map.current?.resize()
         })
         
-    })
+    },[changeZoom])
 
     return (      
-        <div id='map' ref={mapContainer}>
+        <div id='map' ref={mapContainer} >
             <DataDisplay lat= {lat} lng={lng} zoom={zoom}/>
         </div>
         
