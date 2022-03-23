@@ -1,0 +1,75 @@
+#side__button{
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 12px 80px 0px 0px;
+    padding: 6px 12px;
+    border: none;
+    background-color: transparent;
+    
+}
+
+#side__button .circleNorm{
+  height: 31px;
+  width: 31px;
+        
+  .background {
+    fill: transparent;
+    stroke: #013220 ;
+    transition: all 200ms ease;
+  }
+
+  .foreground {
+    fill: transparent;
+    stroke-dasharray: 377;
+    stroke-dashoffset: 377;
+    stroke: #EE3769;
+    transform-origin: 50% 50%;
+    transform: rotate(-270deg);
+    transition: all 800ms ease;
+  }
+  
+  .line {
+    stroke-width: 1;
+    stroke: #013220;
+    transform-origin: 50% 50%;
+    transition: all 500ms ease;
+  }
+  
+  .line2 {
+    transform: rotate(-90deg);
+  }
+}
+
+#side__button .circleClick{
+  height: 31px;
+  width: 31px;
+
+  .background {
+    fill: transparent;
+    stroke: transparent;
+    transition: all 200ms ease;
+  }
+  .foreground {
+    fill: transparent;
+    stroke-dasharray: 377;
+    stroke-dashoffset: 0;
+    stroke: #EE3769;
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+    transition: all 800ms ease;
+  }
+  
+  .line {
+    stroke: #EE3769;
+    stroke-width: 1;
+    transform-origin: 50% 50%;
+    transition: all 500ms ease;
+    transform: rotate(180deg);
+  }
+  
+  .line2 {
+    transform: rotate(0);
+  }
+}
